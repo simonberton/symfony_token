@@ -98,6 +98,6 @@ class APIController extends AbstractController
 
         $repository->delete($product);
 
-        return new JsonResponse(null, 204); // No content
+        return new JsonResponse(null, 200);
     }
 }
