@@ -47,7 +47,7 @@ api as username
 test as password
 
 For creating a token you must call first via POST the following url: /local.aaxis.com/api-login
-with this parameters as raw BODY:
+with this parameters as raw BODY with JSON type:
 
 {
 "username": "api",
@@ -61,3 +61,85 @@ This will return a token.
 Now copy that token and use it calling the API as a Bearer Token as such:
 
 ![img_1.png](img_1.png)
+
+## 🛍️ Products API
+
+This API allows you to create, update, delete, and list products.
+
+### 🔗 Base URL
+
+```
+http://local.aaxis.com/api/products
+```
+
+---
+
+### 📦 Create Product
+
+**Endpoint:**  
+`POST /api/products`
+
+**Request Body:**
+```json
+{
+  "name": "Rexona",
+  "sku": "123"
+}
+```
+
+---
+
+### ✏️ Update Product
+
+**Endpoint:**  
+`PUT /api/products/{id}`  
+(e.g., `/api/products/1`)
+
+**Request Body:**
+```json
+{
+  "id": 1,
+  "name": "Rexona",
+  "sku": "123"
+}
+```
+
+---
+
+### ❌ Delete Product
+
+**Endpoint:**  
+`DELETE /api/products/{id}`  
+(e.g., `/api/products/1`)
+
+---
+
+### 📋 List Products
+
+**Endpoint:**  
+`GET /api/products`
+
+**Response Example:**
+```json
+[
+  {
+    "id": 2,
+    "name": "Rexona",
+    "sku": "123"
+  },
+  {
+    "id": 3,
+    "name": "Rexona 2",
+    "sku": "1233"
+  }
+]
+```
+
+---
+
+### 📘 Notes
+
+- `sku` should be unique per product.
+- When updating a product, include the `id` in both the URL and body.
+
+
