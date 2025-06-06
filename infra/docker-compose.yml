@@ -1,0 +1,40 @@
+services:
+    aaxis_web:
+        build: ./web
+        container_name: aaxis-web
+        image: aaxis-web
+        ports:
+            - 80:80
+        volumes:
+            - ${APP_DIR}:/home/app
+        networks:
+            main:
+                aliases:
+                    - local.aaxis.com
+    aaxis_php:
+        build: ./php
+        container_name: aaxis-php
+        image: aaxis-php
+        volumes:
+            - ${APP_DIR}:/home/app:cached
+        networks:
+            main:
+                aliases:
+                    - aaxis_php
+    aaxis_dbserver:
+        container_name: aaxis-dbserver
+        image: aaxis-dbserver
+        build: ./dbserver
+        ports:
+         - "${DB_PORT}:3306"
+        volumes:
+            - ${APP_DB}:/var/lib/mysql
+        environment:
+            MYSQL_ALLOW_EMPTY_PASSWORD: 1
+        networks:
+            main:
+                aliases:
+                    - aaxis_dbserver
+
+networks:
+    main:
