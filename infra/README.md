@@ -6,6 +6,11 @@ Edit your hosts files and add the following line:
 
 ``127.0.0.1 local.aaxis.com``
 
+After cloning the repository:
+Go to infra folder
+
+``cd infra``
+
 Lets boot up the server:
 
 ```docker-compose up --build -d```
