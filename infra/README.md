@@ -6,6 +6,11 @@ Edit your hosts files and add the following line:
 
 ``127.0.0.1 local.aaxis.com``
 
+After cloning the repository:
+Go to infra folder
+
+``cd infra``
+
 Lets boot up the server:
 
 ```docker-compose up --build -d```
@@ -29,11 +34,11 @@ Configure Symfony
 
 ```bash
 
-docker-exec -it aaxis-php bash
+docker exec -it aaxis-php bash
 composer install
-bin/console d:s:u --force
+php bin/console d:s:u --force
 chmod -R 777 var/cache
-bin/console create-user
+php bin/console create-user
 ```
 
 Now we have created a user for the API.
